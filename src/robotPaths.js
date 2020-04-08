@@ -30,13 +30,10 @@ class RobotPaths {
   }
 
   solve() {
-    console.log(this.board);
     // let startPoint = this.board.board[0][0];
     // let endPoint = this.board.board[this.size - 1][this.size - 1];
     //recursive function goes here
     this.move(0, 0);
-    console.log("new ", this.board);
-    console.log("count", this.count);
     return this.count;
   }
 
