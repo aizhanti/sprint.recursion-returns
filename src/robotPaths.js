@@ -23,12 +23,27 @@ class RobotPaths {
   // you may want to change this code later on, too
   constructor(size) {
     this.board = new Board(size);
+    this.size = size;
     this.row = 0;
     this.col = 0;
+    this.count = 0;
   }
 
   solve() {
-    // Your code here.
+    console.log(this.board);
+    let startPoint = this.board.board[0][0];
+    let endPoint = this.board.board[this.size - 1][this.size - 1];
+    //recursive function goes here
+    function findUniquePath() {}
+    return this.count;
+  }
+
+  move(x, y) {
+    this.board.togglePiece();
+    //base case
+    //add this.count if you get to endPoint
+    //return if you can't move
+    1, 2;
   }
 }
 
