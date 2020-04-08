@@ -35,6 +35,7 @@ describe.only("robotPaths", () => {
 
   it("should correctly identify the number of unique paths for a 3x3 grid", () => {
     const result = new RobotPaths(3).solve();
+
     expect(result).to.equal(12);
   });
 
