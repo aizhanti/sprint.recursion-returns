@@ -36,65 +36,31 @@ class RobotPaths {
     //recursive function goes here
     this.move(0, 0);
     console.log("new ", this.board);
+    console.log("count", this.count);
     return this.count;
   }
 
-  canMove(x, y) {
-    if (x >= 0 && y >= 0 && x < this.size && y < this.size) {
-      //if it has been visited, we can't move (which is why we negate)
-      return !this.board.hasBeenVisited(x, y);
-    }
-    return false;
-  }
-
-  checkRight(x, y) {
-    // 0,0
-    x = x + 1;
-    return this.canMove(x, y); //1,0
-  }
-
-  checkLeft(x, y) {
-    x = x - 1;
-    return this.canMove(x, y);
-  }
-
-  checkUp(x, y) {
-    y = y + 1;
-    return this.canMove(x, y);
-  }
-
-  checkDown(x, y) {
-    y = y - 1;
-    return this.canMove(x, y);
-  }
-
   move(x, y) {
-    this.board.togglePiece(x, y);
-    //0,0
     if (x === this.size - 1 && y === this.size - 1) {
-      this.board.togglePiece(x, y);
-      return this.count++;
-      // x = 0;
-      // y = 0;
-      //this.move(x, y);
-    } else if (this.checkRight(x, y)) {
-      //-1,0
-      x = x + 1;
-      this.move(x, y);
-    } else if (this.checkDown(x, y)) {
-      y = y - 1;
-      this.move(x, y);
-    } else if (this.checkLeft(x, y)) {
-      x = x - 1;
-      this.move(x, y);
-    } else if (this.checkUp(x, y)) {
-      y = y + 1;
-      this.move(x, y);
+      //this.board.togglePiece(x, y);
+      this.count++;
+      return;
     }
 
-    //base case
-    //add this.count if you get to endPoint
-    //return if you can't move
+    if (x < 0 || y < 0 || x >= this.size || y >= this.size) {
+      return;
+    }
+
+    if (this.board.hasBeenVisited(x, y)) {
+      return;
+    }
+
+    this.board.togglePiece(x, y);
+    this.move(x + 1, y); //right
+    this.move(x, y + 1); //down
+    this.move(x - 1, y); //left
+    this.move(x, y - 1); //up
+    this.board.togglePiece(x, y);
   }
 }
 

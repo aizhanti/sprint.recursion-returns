@@ -11,7 +11,7 @@ describe.only("robotPaths", () => {
   });
 
   it("should return a number", () => {
-    const path = new RobotPaths(3);
+    const path = new RobotPaths(2);
     expect(path).not.to.be.undefined;
     expect(path.solve).to.be.a("function");
     const result = path.solve();
